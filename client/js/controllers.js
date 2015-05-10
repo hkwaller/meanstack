@@ -1,16 +1,13 @@
 angular.module('app.controllers', [])
 
-.controller('MainCtrl', function($scope) {
-    $scope.posts = [
-        {
-            username: "hkwaller",
-            text: "kingen"
-        },
-        {
-            username: "m0nkey",
-            text: "kin"
-        }
-    ]
+.controller('MainCtrl', function($scope, $http) {
+    $http.get('localhost:3000/api/posts')
+    .success(function(posts) {
+        $scope.posts = posts
+    })
+    .error(function(err) {
+        console.log(err)  
+    })
     
     $scope.addPost = function(post) {
         $scope.posts.unshift({
