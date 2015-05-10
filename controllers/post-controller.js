@@ -9,10 +9,8 @@ router.get('/', function(req, res, next) {
 })
 
 router.post('/', function(req, res, next) {
-    var post = new Post({
-        username: req.body.username,
-        text: req.body.text
-    }) 
+    var post = new Post({ text: req.body.text })
+    post.username = req.auth.username
 
     post.save(function(err, post) {
         if (err) { return next(err) }

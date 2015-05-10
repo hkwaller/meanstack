@@ -1,6 +1,7 @@
 {
   "name": "innlevering3",
   "dependencies": {
+    "bcrypt": "^0.8.3",
     "body-parser": "^1.12.3",
     "express": "^4.12.3",
     "gulp": "^3.8.11",
@@ -9,6 +10,7 @@
     "gulp-nodemon": "^2.0.3",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.2.0",
+    "jwt-simple": "^0.3.0",
     "mongoose": "^4.0.2"
   }
 }

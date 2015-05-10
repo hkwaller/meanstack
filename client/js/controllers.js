@@ -1,5 +1,19 @@
 angular.module('app.controllers', [])
 
+.controller('ApplicationCtrl', function($scope, UserService) {
+    $scope.$on('login', function(_, user) {
+        $scope.currentUser = user
+    })
+    
+    $scope.logout = function() {
+        UserService.logout()
+    }
+    
+    if (UserService.token) {
+        console.log("nope")
+    }
+})
+
 .controller('MainCtrl', function($scope, $http, PostService) {
     $scope.posts = []
     
@@ -22,5 +36,24 @@ angular.module('app.controllers', [])
                 console.log(err)
             })
         }
+    }
+})
+
+.controller('RegisterCtrl', function($scope, $location, UserService) {
+    $scope.register = function(user) {
+        UserService.register(user).then(function(response) {
+            if (response) {
+                $scope.$emit('login', response.data)
+            }
+        })
+    }
+})
+
+
+.controller('LoginCtrl', function($scope, UserService) {
+    $scope.login = function(user) {
+        UserService.login(user).then(function(response) {
+            $scope.$emit('login', response.data)
+        })
     }
 })
