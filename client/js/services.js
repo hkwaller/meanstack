@@ -8,4 +8,6 @@ angular.module('app.services', [])
     this.post = function(post) {
         return $http.post('/api/posts', post)
     }
+    
+    console.log("heyooo")
 })
